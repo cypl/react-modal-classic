@@ -1,6 +1,4 @@
 import React from 'react'
-// import Modal from './lib'
-// import { useModal } from './lib'
 import { Modal, useModal } from './lib'
 
 const App = () => {
@@ -10,7 +8,7 @@ const App = () => {
     return (
         <>
             <button onClick={openModal}>Open modal</button>
-            <Modal modalOpen={modalOpen} closeModal={closeModal}>
+            <Modal modalOpen={modalOpen} closeModal={closeModal} closebutton={"in"}>
                 <p>Here is the content of the modal.</p>
             </Modal>
         </>
