@@ -9,7 +9,7 @@ const App = () => {
         <>
             <button onClick={openModal}>Open modal</button>
             <Modal modalOpen={modalOpen} closeModal={closeModal} closebutton={"in"}>
-                <p>Here is the content of the modal.</p>
+                {/* <p>Here is the content of the modal.</p> */}
             </Modal>
         </>
     )
