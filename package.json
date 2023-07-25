@@ -1,6 +1,6 @@
 {
     "name": "react-modal-classic",
-    "version": "0.0.9",
+    "version": "0.0.13",
     "description": "This is a classic modal component for your React application, easy to use and customise… hook included!",
     "license": "MIT",
     "author": "cypl",
@@ -8,7 +8,7 @@
     "keywords": [],
     "files": [
         "dist",
-        "react-modal-classic.d.ts",
+        "react-modal-classic.umd.d.ts",
         "README.md"
     ],
     "main": "./dist/react-modal-classic.umd.js",
