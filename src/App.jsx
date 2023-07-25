@@ -7,7 +7,7 @@ const App = () => {
     
     return (
         <>
-            <button onClick={openModal}>Open modal</button>
+            <button onClick={(openModal)}>Open modal</button>
 
             <Modal 
                 modalOpen={modalOpen} 
