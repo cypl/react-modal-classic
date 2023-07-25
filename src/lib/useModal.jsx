@@ -2,6 +2,7 @@ import { useState } from "react"
 
 export function useModal() {
   const [modalOpen, setModalOpen] = useState(false)
+  const [animeOut, setAnimeOut] = useState(false)
 
   const openModal = () => {
     document.getElementsByTagName('html')[0].style.overflowY = "hidden"
@@ -10,9 +11,13 @@ export function useModal() {
 
   const closeModal = () => {
     document.getElementsByTagName('html')[0].style.overflowY = "auto"
-    setModalOpen(false)
+    setAnimeOut(true)
+      setTimeout(() => {
+        setModalOpen(false)
+        setAnimeOut(false)
+    }, "600")
   }
 
-  return { modalOpen, openModal, closeModal }
+  return { modalOpen, openModal, animeOut, closeModal }
 }
 

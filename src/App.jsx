@@ -3,7 +3,7 @@ import { Modal, useModal } from './lib'
 
 const App = () => {
     
-    const { modalOpen, openModal, closeModal } = useModal()
+    const { modalOpen, openModal, animeOut, closeModal } = useModal()
     
     return (
         <>
@@ -14,8 +14,10 @@ const App = () => {
                 closeModal={closeModal} 
                 closebutton="in"
                 size="m"
+                animeOut={animeOut}
                 >
                 <p>Here is the content of the modal.</p>
+                <p onClick={closeModal}>Close this modal</p>
             </Modal>
         </>
     )

@@ -118,9 +118,9 @@ const sizeValues = {
     xl: "900px",
 }
 
-function Modal({ modalOpen, closeModal, closebutton, size, children }){
+function Modal({ modalOpen, animeOut, closeModal, closebutton, size, children }){
     
-    const [animeOut, setAnimeOut] = useState(false)
+    // const [animeOut, setAnimeOut] = useState(false)
 
     const [viewportHeight, setViewportHeight] = useState("auto")
     const [modalHeight, setModalHeight] = useState("auto")
@@ -150,33 +150,24 @@ function Modal({ modalOpen, closeModal, closebutton, size, children }){
     // close Modal on keyboard escape
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === 'Escape') { closeModalAnimated() }
+            if (event.key === 'Escape') { closeModal() }
         }
         document.addEventListener('keydown', handleKeyDown)
         return () => { document.removeEventListener('keydown', handleKeyDown) }
     }, [])
 
-
-    const closeModalAnimated = () => {
-        setAnimeOut(true)
-        setTimeout(() => {
-            closeModal()
-            setAnimeOut(false)
-        }, "600")
-    }
-
     return(<>
         {modalOpen && 
             <Overlay className={(viewportHeight >= modalHeight) && 'aligncenter' }>
                 <Background 
-                    onClick={closeModalAnimated}
+                    onClick={() => closeModal()}
                     style={{ height: `${(viewportHeight < modalHeight) ? `${modalHeight}px` : '100%'}` }}
                     className={animeOut ? 'anime-out' : ''}
                 >
                 </Background>
                 <ModalContent ref={modalRef} $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''}>
                     {closebutton != "none" && 
-                        <CloseModal onClick={closeModalAnimated} $closebutton={closebutton}>
+                        <CloseModal onClick={() => closeModal()} $closebutton={closebutton}>
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
                         </CloseModal>
                     }
@@ -192,9 +183,9 @@ export default Modal
 
 Modal.propTypes = {
     modalOpen: PropTypes.bool.isRequired,
+    animeOut: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
     closebutton: PropTypes.string,
     size: PropTypes.oneOf(["s", "m", "l", "xl"]),
     children: PropTypes.any.isRequired,
 }
-
