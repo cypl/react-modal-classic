@@ -1,6 +1,6 @@
 {
     "name": "react-modal-classic",
-    "version": "0.0.13",
+    "version": "0.0.16",
     "description": "This is a classic modal component for your React application, easy to use and customise… hook included!",
     "license": "MIT",
     "author": "cypl",
