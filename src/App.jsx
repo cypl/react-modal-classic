@@ -15,7 +15,7 @@ const App = () => {
                 closebutton="in"
                 size="m"
                 animeOut={animeOut}
-                >
+            >
                 <p>Here is the content of the modal.</p>
                 <p onClick={closeModal}>Close this modal</p>
             </Modal>
