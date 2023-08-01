@@ -39,7 +39,6 @@ const popOut = keyframes`
         transform:translateY(25px);
     }
 `
-
 const Overlay = styled.div`
     position:fixed;
     width:100vw;
@@ -71,7 +70,6 @@ const Background = styled.div`
         animation-delay: 0.4s; 
     }
 `
-
 const ModalContent = styled.div`
     position:relative;
     max-width:calc(100% - 40px);
@@ -119,7 +117,6 @@ const CloseModal = styled.div`
         color:${props => props.$closebutton === "in" ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.7)"};
     }
 `
-
 const sizeValues = {
     s: "350px",
     m: "500px",
@@ -133,7 +130,7 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
     const [modalHeight, setModalHeight] = useState("auto")
     const modalRef = useRef(null)
 
-    // Scroll management based on modal size.
+    // Scroll management based on modal height.
     // Calculate viewport height
     useEffect(() => {
         modalOpen && setViewportHeight(window.innerHeight) // On page load
@@ -152,7 +149,6 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
         window.addEventListener("resize", handleResize)
         return () => { window.removeEventListener("resize", handleResize) }
     }, [modalOpen])
-
 
     // close Modal on keyboard escape
     useEffect(() => {
