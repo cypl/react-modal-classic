@@ -1,8 +1,8 @@
 import React from 'react'
 import { Modal, useModal } from './lib'
 import { createRoot } from 'react-dom/client'
-// import { modalService } from './lib/ModalService'
 import styled from "styled-components"
+import ModalContentText from './ModalContentText'
 
 const App = () => {
     
@@ -40,13 +40,16 @@ const App = () => {
                 <Modal 
                     modalOpen={modalOpen} 
                     closeModal={closeModal} 
-                    closebutton="in"
-                    size="m"
                     animeOut={animeOut}
+                    // options
+                    closebutton="out" // "in", "out", "none" // if not set: "out"
+                    size="l" // "s", "m", "l", "xl" // if not set: 1100px
+                    backgroundcolor="#fff" // a color value  // if not set: transparent
+                    radius="4px" // a size value (eg. "4px" or "0.5rem") // if not set: none
                 >
-                    <p>Here is the content of the modal.</p>
-                    <p onClick={closeModal}>Close this modal</p>
+                    <ModalContentText />
                 </Modal>
+
             </main>
         </>
     )
