@@ -158,7 +158,7 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, size, children })
 
     return(<>
         {modalOpen && 
-            <Overlay className={(viewportHeight >= modalHeight) && 'aligncenter' }>
+            <Overlay className={(viewportHeight >= modalHeight) && 'aligncenter' } role="dialog" aria-modal="true" aria-hidden="false">
                 <Background 
                     onClick={() => closeModal()}
                     style={{ height: `${(viewportHeight < modalHeight) ? `${modalHeight}px` : '100%'}` }}

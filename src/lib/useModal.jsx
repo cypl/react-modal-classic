@@ -7,6 +7,7 @@ export function useModal() {
 
   const openModal = () => {
     document.getElementsByTagName('html')[0].style.overflowY = "hidden"
+    document.getElementsByTagName('main')[0].setAttribute("aria-hidden", "true")
     setModalOpen(true)
     if (delay) clearTimeout(delay)
     setDelay(null)
@@ -14,7 +15,8 @@ export function useModal() {
 
   const closeModal = useCallback(() => {
     if (delay) return
-    document.getElementsByTagName('html')[0].style.overflowY = "auto"
+    document.getElementsByTagName('html')[0].removeAttribute("style")
+    document.getElementsByTagName('main')[0].removeAttribute("aria-hidden")
     setAnimeOut(true)
     const x = setTimeout(() => {
       setModalOpen(false)
