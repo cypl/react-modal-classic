@@ -71,6 +71,7 @@ const Background = styled.div`
         animation-delay: 0.4s; 
     }
 `
+
 const ModalContent = styled.div`
     position:relative;
     max-width:calc(100% - 40px);
@@ -91,6 +92,16 @@ const ModalContent = styled.div`
         animation-delay: 0s; 
     }
 `
+const ModalContentBackground = styled.div`
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+`
+const ModalContentInner = styled.div`
+    position:relative;
+    overflow:hidden;
+`
 const CloseModal = styled.div`
     position:absolute;
     width:25px;
@@ -101,6 +112,7 @@ const CloseModal = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
+    z-index:1;
     & svg{
         width:25px;
         height:25px;
@@ -115,7 +127,7 @@ const sizeValues = {
     xl: "900px",
 }
 
-function Modal({ modalOpen, animeOut, closeModal, closebutton, size, backgroundcolor, radius, children }){
+function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor, size, backgroundcolor, radius, children }){
     
     const [viewportHeight, setViewportHeight] = useState("auto")
     const [modalHeight, setModalHeight] = useState("auto")
@@ -160,14 +172,18 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, size, backgroundc
                     className={animeOut ? 'anime-out' : ''}
                 >
                 </Background>
-                <ModalContent ref={modalRef} $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''} style={{backgroundColor : `${(backgroundcolor != undefined) && `${backgroundcolor}`}`, borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
-                    {closebutton != "none" && 
-                        <CloseModal onClick={() => closeModal()} $closebutton={closebutton}>
-                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
-                        </CloseModal>
-                    }
-                    {children}
-                </ModalContent>
+                    <ModalContent ref={modalRef} $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''}>
+                        <ModalContentBackground style={{backgroundColor : `${(backgroundcolor != undefined) ? `${backgroundcolor}` : "#fff"}`, borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
+                            {closebutton != "none" && 
+                                <CloseModal onClick={() => closeModal()} $closebutton={closebutton} tabIndex={1}>
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style={{color:`${(closebuttoncolor != undefined) ? `${closebuttoncolor}` : `rgba(255,255,255,0.7)`}`}} xmlns="http://www.w3.org/2000/svg"><path d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
+                                </CloseModal>
+                            }
+                        </ModalContentBackground>
+                        <ModalContentInner style={{borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
+                            {children}
+                        </ModalContentInner>
+                    </ModalContent>
             </Overlay>
         }
         </>
@@ -184,5 +200,6 @@ Modal.propTypes = {
     size: PropTypes.oneOf(["s", "m", "l", "xl"]),
     backgroundcolor: PropTypes.string,
     radius: PropTypes.string,
+    closebuttoncolor: PropTypes.string,
     children: PropTypes.any.isRequired,
 }

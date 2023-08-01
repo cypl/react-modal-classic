@@ -42,10 +42,11 @@ const App = () => {
                     closeModal={closeModal} 
                     animeOut={animeOut}
                     // options
-                    closebutton="out" // "in", "out", "none" // if not set: "out"
+                    closebutton="in" // "in", "out", "none" // if not set: "out"
+                    closebuttoncolor="#fff"  // a color value (eg. "purple" or "rgba(0,0,0,0.5)"  // if not set: "rgba(255,255,255,0.7)"
                     size="l" // "s", "m", "l", "xl" // if not set: 1100px
-                    backgroundcolor="#fff" // a color value  // if not set: transparent
-                    radius="4px" // a size value (eg. "4px" or "0.5rem") // if not set: none
+                    backgroundcolor="#ededed" // a color value (eg. "#242424" or "transparent")  // if not set: "#fff"
+                    radius="8px" // a size value (eg. "4px" or "0.5rem") // if not set: "none"
                 >
                     <ModalContentText />
                 </Modal>
