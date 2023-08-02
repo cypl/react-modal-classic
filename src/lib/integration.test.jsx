@@ -36,6 +36,7 @@ describe('Integration test for Modal component', () => {
     // Modal can be closed by pressing escape key
     fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
 
+    // Modal should be closed after a short CSS animation
     await waitFor(() => {
       expect(screen.queryByText('This modal is based on a component and a hook.')).to.be.null
     })
