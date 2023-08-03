@@ -13,7 +13,8 @@ const App = () => {
             <main>
 
                 <Button onClick={openModal} className="normal">Open modal</Button>
-                <Button onClick={() => modalService(<ModalContentText />,
+                <Button onClick={() => modalService(
+                    <ModalContentText />,
                     {
                         closebutton: "out",
                         size: "s",
