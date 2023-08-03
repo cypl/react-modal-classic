@@ -1,41 +1,25 @@
 import React from 'react'
 import { Modal, useModal } from './lib'
-import { createRoot } from 'react-dom/client'
 import styled from "styled-components"
 import ModalContentText from './ModalContentText'
+import { modalService } from './lib/ModalService'
 
 const App = () => {
     
     const { modalOpen, openModal, animeOut, closeModal } = useModal()
     
-    const loadModal = () => {
-        const ComposantTest = () => {
-            return (
-                <Modal 
-                    modalOpen={modalOpen} 
-                    closeModal={closeModal} 
-                    closebutton="in"
-                    size="m"
-                    animeOut={animeOut}
-                >
-                    <p>Here is the content of the modal.</p>
-                    <p onClick={closeModal}>Close this modal</p>
-                </Modal>
-            )
-        }
-        const domNode = document.createElement('div')
-        const root = createRoot(domNode)
-        root.render(<ComposantTest />)
-        document.body.appendChild(domNode)
-        openModal()
-    }
-
     return (
         <>
             <main>
 
                 <Button onClick={openModal} className="normal">Open modal</Button>
-                <Button onClick={loadModal} className="function">Open modal with function</Button>
+                <Button onClick={() => modalService(<ModalContentText />,
+                    {
+                        closebutton: "out",
+                        size: "s",
+                        radius: "12px",
+                    }
+                )} className="function">Open modal with function</Button>
                 
                 <Modal 
                     modalOpen={modalOpen} 

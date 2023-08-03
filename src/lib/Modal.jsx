@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react"
 import styled, { keyframes }from "styled-components"
 import PropTypes from 'prop-types'
 
