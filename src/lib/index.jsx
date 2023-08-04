@@ -1,4 +1,2 @@
-import Modal from "./Modal"
-import { useModal } from "./useModal"
-
-export { Modal, useModal }
+import { ModalContext, ModalProvider } from "./ModalContext"
+export { ModalContext, ModalProvider }
