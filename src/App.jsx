@@ -1,43 +1,18 @@
-import React from 'react'
-import { Modal, useModal } from './lib'
+import { React, useContext } from 'react'
 import styled from "styled-components"
-import ModalContentText from './ModalContentText'
-import { modalService } from './lib/ModalService'
+import { ModalContext } from './lib/ModalContext'
+import ModalContentFirst from './ModalContentFirst'
+import ModalContentSecond from './ModalContentSecond'
 
 const App = () => {
     
-    const { modalOpen, openModal, animeOut, closeModal } = useModal()
-    
+    const { openModal } = useContext(ModalContext)
+
     return (
-        <>
-            <main>
-
-                <Button onClick={openModal} className="normal">Open modal</Button>
-                <Button onClick={() => modalService(
-                    <ModalContentText />,
-                    {
-                        closebutton: "out",
-                        size: "s",
-                        radius: "12px",
-                    }
-                )} className="function">Open modal with function</Button>
-                
-                <Modal 
-                    modalOpen={modalOpen} 
-                    closeModal={closeModal} 
-                    animeOut={animeOut}
-                    // options
-                    closebutton="in" // "in", "out", "none" // if not set: "out"
-                    closebuttoncolor="#fff"  // a color value (eg. "purple" or "rgba(0,0,0,0.5)"  // if not set: "rgba(255,255,255,0.7)"
-                    size="l" // "s", "m", "l", "xl" // if not set: 1100px
-                    backgroundcolor="#ededed" // a color value (eg. "#242424" or "transparent")  // if not set: "#fff"
-                    radius="8px" // a size value (eg. "4px" or "0.5rem") // if not set: "none"
-                >
-                    <ModalContentText />
-                </Modal>
-
-            </main>
-        </>
+        <main>
+            <Button onClick={() => openModal(<ModalContentFirst/>)} className="normal">Open modal</Button>
+            <Button onClick={() => openModal(<ModalContentSecond/>)} className="function">Open modal with function</Button>
+        </main>
     )
 }
 
