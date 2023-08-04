@@ -18,7 +18,43 @@ body{
   align-items:center;
   justify-content:center;
 }
+figure{
+  margin:0;
+  position: relative;
+}
+figcaption{
+  background: -moz-linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:12px 8px 8px 8px;
+  color:rgba(255,255,255,0.6);
+  font-size:12px;
+  line-height:1.1;
+}
 img{
   display:block;
   width:100%;
+}
+.modal-caption{
+  padding:25px 15px;
+}
+.modal-caption p{
+  font-size:17px;
+  line-height:1.4;
+  color:#333;
+  margin:0;
+  text-align:center;
+}
+.modal-caption p button{
+  padding:0;
+  background-color:transparent;
+  font-size:12px;
+  line-height:1.4;
+  color:#777;
+  text-decoration:underline;
+  cursor:pointer;
+  border:none;
 }
