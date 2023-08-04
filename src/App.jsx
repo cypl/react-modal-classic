@@ -1,4 +1,4 @@
-import { React, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import { ModalContext } from './lib/ModalContext'
 import ModalContentFirst from './ModalContentFirst'
@@ -11,7 +11,7 @@ const App = () => {
     return (
         <main>
             <Button onClick={() => openModal(<ModalContentFirst/>)} className="normal">Open modal</Button>
-            <Button onClick={() => openModal(<ModalContentSecond/>)} className="function">Open modal with function</Button>
+            <Button onClick={() => openModal(<ModalContentSecond/>, { closebutton: "in", size: "l" })} className="function">Open modal with function</Button>
         </main>
     )
 }

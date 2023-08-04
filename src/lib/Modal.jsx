@@ -128,11 +128,11 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
     const [viewportHeight, setViewportHeight] = useState("auto")
     const [modalHeight, setModalHeight] = useState("auto")
     const modalRef = useRef(null)
-
+    
     // Scroll management based on modal height.
     // Calculate viewport height
     useEffect(() => {
-        modalOpen && setViewportHeight(window.innerHeight) // On page load
+        setViewportHeight(window.innerHeight) // On page load
         const handleResize = () => { setViewportHeight(window.innerHeight) } // On page resize
         window.addEventListener("resize", handleResize)
         return () => { window.removeEventListener("resize", handleResize) }
@@ -196,5 +196,5 @@ Modal.propTypes = {
     backgroundcolor: PropTypes.string,
     radius: PropTypes.string,
     closebuttoncolor: PropTypes.string,
-    modalContent: PropTypes.any.isRequired,
+    modalContent: PropTypes.any,
 }

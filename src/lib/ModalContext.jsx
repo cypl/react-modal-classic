@@ -1,20 +1,34 @@
-import { React, useState, useCallback, createContext } from 'react'
+import React, { useState, useCallback, createContext } from 'react'
 import PropTypes from 'prop-types'
 import Modal from './Modal'
 
 export const ModalContext = createContext()
 
 export const ModalProvider = ({ children }) => {
-   
+    
+    const defaultOptions = {
+        closebutton: "out",
+        closebuttoncolor: "#fff",
+        size: "m",
+        backgroundcolor: "#fff",
+        radius: "6px"
+    }
+
     const [modalOpen, setModalOpen] = useState(false)
     const [modalContent, setModalContent] = useState()
     const [animeOut, setAnimeOut] = useState(false)
+    const [modalOptions, setModalOptions] = useState(defaultOptions)
 
-    const openModal = (modalContent) => {
+    const openModal = (content, options = {}) => {
         document.getElementsByTagName('html')[0].style.overflowY = "hidden"
         document.getElementsByTagName('main')[0].setAttribute("aria-hidden", "true")
+        // Merge default options with provided ones (if any)
+        setModalOptions(prevOptions => ({
+            ...prevOptions,
+            ...options
+        }))
         setModalOpen(true)
-        setModalContent(modalContent)
+        setModalContent(content)
     }
 
     const closeModal = useCallback(() => {
@@ -24,6 +38,7 @@ export const ModalProvider = ({ children }) => {
         setTimeout(() => {
             setModalOpen(false)
             setModalContent()
+            setModalOptions(defaultOptions)
             setAnimeOut(false)
         }, 600)
     }, [])
@@ -36,14 +51,8 @@ export const ModalProvider = ({ children }) => {
                 closeModal={closeModal} 
                 animeOut={animeOut} 
                 modalContent={modalContent}
-                // options to pass as argument in openModal()
-                closebutton="out" // "in", "out", "none" // if not set: "out"
-                closebuttoncolor="#fff"  // a color value (eg. "purple" or "rgba(0,0,0,0.5)"  // if not set: "rgba(255,255,255,0.7)"
-                size="m" // "s", "m", "l", "xl" // if not set: 1100px
-                backgroundcolor="#ededed" // a color value (eg. "#242424" or "transparent")  // if not set: "#fff"
-                radius="8px" // a size value (eg. "4px" or "0.5rem") // if not set: "none"
-                // options
-                />
+                {...modalOptions}
+            />
         </ModalContext.Provider>
     )
 }
