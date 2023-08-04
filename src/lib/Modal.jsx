@@ -46,14 +46,12 @@ const Overlay = styled.div`
     z-index:9999;
     top:0;
     left:0;
-    display:flex;
-    justify-content: center;
     overflow:auto;
-    &.aligncenter{
-        align-items:center;
-    }
 `
 const Background = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items:center;
     position:absolute;
     width:100%;
     background-color: rgba(0, 0, 0, 0.85);
@@ -91,6 +89,7 @@ const ModalContent = styled.div`
     }
 `
 const ModalContentBackground = styled.div`
+    box-shadow:0 0 60px #000;
     position:absolute;
     top:0;
     width:100%;
@@ -124,7 +123,7 @@ const sizeValues = {
     xl: "900px",
 }
 
-function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor, size, backgroundcolor, radius, children }){
+function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor, size, backgroundcolor, radius, modalContent }){
     
     const [viewportHeight, setViewportHeight] = useState("auto")
     const [modalHeight, setModalHeight] = useState("auto")
@@ -160,14 +159,13 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
     }, [])
 
     return(<>
-        {modalOpen && 
-            <Overlay className={(viewportHeight >= modalHeight) && 'aligncenter' } role="dialog" aria-modal="true" aria-hidden="false">
+        {modalOpen && modalContent &&
+            <Overlay role="dialog" aria-modal="true" aria-hidden="false">
                 <Background 
                     onClick={() => closeModal()}
                     style={{ height: `${(viewportHeight < modalHeight) ? `${modalHeight}px` : '100%'}` }}
                     className={animeOut ? 'anime-out' : ''}
                 >
-                </Background>
                     <ModalContent ref={modalRef} $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''}>
                         <ModalContentBackground style={{backgroundColor : `${(backgroundcolor != undefined) ? `${backgroundcolor}` : "#fff"}`, borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
                             {closebutton != "none" && 
@@ -177,9 +175,10 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
                             }
                         </ModalContentBackground>
                         <ModalContentInner style={{borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
-                            {children}
+                            {modalContent}
                         </ModalContentInner>
                     </ModalContent>
+                </Background>
             </Overlay>
         }
         </>
@@ -197,5 +196,5 @@ Modal.propTypes = {
     backgroundcolor: PropTypes.string,
     radius: PropTypes.string,
     closebuttoncolor: PropTypes.string,
-    children: PropTypes.any.isRequired,
+    modalContent: PropTypes.any.isRequired,
 }
