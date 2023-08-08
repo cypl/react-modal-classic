@@ -71,7 +71,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 ```
 
 ### 2- Open the modal with a function:
-Now, you can launch the modal everywhere in your app, directly from a function named openModal(), by setting the content of the modal as parameter. The openModal() function has to be imported from ModalContext, that you have previously set with the ModalProvider component.
+Now, you can launch the modal everywhere in your app, directly from a function named openModal(), by setting the content of the modal as a parameter. The openModal() function has to be imported from ModalContext, that you have previously set with the ModalProvider component.
 ```jsx
 import React, { useContext } from "react"
 import { ModalContext } from "react-modal-classic"
@@ -102,7 +102,8 @@ const defaultOptions = {
 }
 ``` 
 #### b- Set different options in the function
-You can pass options as a parameter object in the openModal() function. Here are a few exemples:
+You can pass options as a parameter object in the openModal() function. It can be usefull if you have different kinds of contents in your app that need to be shown in a modal. 
+Here are two examples:
 ```jsx
 import React, { useContext } from "react"
 import { ModalContext } from "react-modal-classic"
