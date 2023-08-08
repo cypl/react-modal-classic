@@ -6,6 +6,7 @@ export const ModalContext = createContext()
 
 export const ModalProvider = ({ children }) => {
     
+    // Here are the default options for the Modal component 
     const defaultOptions = useMemo(() => ({
         closebutton: "out",
         closebuttoncolor: "#fff",
@@ -20,7 +21,7 @@ export const ModalProvider = ({ children }) => {
     const [modalOptions, setModalOptions] = useState(defaultOptions)
     const closingTimeout = useRef(null)
 
-    // Control body scroll and aria-hidden attribute based on modalOpen state
+    // Control body scroll and <main> aria-hidden attribute, based on modalOpen state
     useEffect(() => {
         if(modalOpen){
             document.body.style.overflowY = "hidden"
