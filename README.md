@@ -1,6 +1,6 @@
 # React Modal Classic
 
-An easy-to-use and classic javascript React modal, that allow you to pop out *“one modal at a time”* in your React App.
+An easy-to-use and classic javascript React modal, that allows you to pop out *“one modal at a time”* in your React App.
 [See it in action here.](https://google.com) 
 
 ## Why this module?
@@ -10,7 +10,7 @@ This module can be used for your basic modal needs, like:
 - collecting informations with a form
 - showing a login form
 - visualize a media
-- getting information on a specific element…
+- getting informations on a specific element…
 
 It can show every content you need, following this idea: *“one modal at a time”*… which means, that you can't open more than one modal at the same time in the viewport. 
 
@@ -27,9 +27,9 @@ npm i react-modal-classic
 - PropTypes
 - TypeScript ESLint
 
-# How to use?
+## How to use?
 
-#### 1- Set the modal context provider:
+### 1- Set the modal context provider:
 
 This modal runs with the Context API of React, so your first task is to set the ModalProvider component in your application.
 
@@ -70,9 +70,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
-#### 2- Open the modal with a function:
-Now, you can launch the modal everywhere in your app, directly from a function named openModal(), by setting the content of the modal as parameter.
-The openModal() function has to be imported from ModalContext, that you have previously set with the ModalProvider component.
+### 2- Open the modal with a function:
+Now, you can launch the modal everywhere in your app, directly from a function named openModal(), by setting the content of the modal as parameter. The openModal() function has to be imported from ModalContext, that you have previously set with the ModalProvider component.
 ```jsx
 import React, { useContext } from "react"
 import { ModalContext } from "react-modal-classic"
@@ -90,8 +89,8 @@ const App = () => {
 export default App
 ```
 
-#### 3- Customize the look of your modals:
-##### a- Options by default
+### 3- Customize the look of your modals:
+#### a- Options by default
 Right from the box, the modal component is set with these default options:
 ```javascript
 const defaultOptions = {
@@ -102,7 +101,7 @@ const defaultOptions = {
     radius: "6px" // should be a size value "5px", "0.5rem"…
 }
 ``` 
-##### b- Set different options in the function
+#### b- Set different options in the function
 You can pass options as a parameter object in the openModal() function. Here are a few exemples:
 ```jsx
 import React, { useContext } from "react"
@@ -113,13 +112,13 @@ import ModalContentMedia from "./components/ModalContentMedia"
 const App = () => {
     
     const { openModal } = useContext(ModalContext)
-    const modalForm = { closebutton: "in", backgroundcolor: "#999", size: "m" }
-    const modalMedia = { closebutton: "none", size: "xl", radius: "none" }
+    const modalFormOptions = { closebutton: "in", backgroundcolor: "#999", size: "m" }
+    const modalMediaOptions = { closebutton: "none", size: "xl", radius: "none" }
 
     return (
         <main>
-            <button onClick={() => openModal(<ModalContentForm/>, modalForm), themeFirst}>Open a form</button>
-            <button onClick={() => openModal(<ModalContentMedia/>, modalMedia)}>Open a media</button>
+            <button onClick={() => openModal(<ModalContentForm/>, modalFormOptions), themeFirst}>Open a form</button>
+            <button onClick={() => openModal(<ModalContentMedia/>, modalMediaOptions)}>Open a media</button>
         </main>
     )
 }
@@ -127,7 +126,7 @@ const App = () => {
 export default App
 ```
 
-#### 4- Close the modal
+### 4- Close the modal
 Modal can be closed by :
 - clicking the close button (close icon at the top right corner of the modal)
 - clicking somewhere in the background
