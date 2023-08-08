@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, createContext, useRef } from 'react'
+import React, { useState, useEffect, useCallback, createContext, useRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Modal from './Modal'
 
@@ -6,13 +6,13 @@ export const ModalContext = createContext()
 
 export const ModalProvider = ({ children }) => {
     
-    const defaultOptions = {
+    const defaultOptions = useMemo(() => ({
         closebutton: "out",
         closebuttoncolor: "#fff",
         size: "m",
         backgroundcolor: "#fff",
         radius: "6px"
-    }
+    }),[])
 
     const [modalOpen, setModalOpen] = useState(false)
     const [modalContent, setModalContent] = useState()
@@ -20,7 +20,7 @@ export const ModalProvider = ({ children }) => {
     const [modalOptions, setModalOptions] = useState(defaultOptions)
     const closingTimeout = useRef(null)
 
-    // Control body scroll and aria attribute based on modalOpen state
+    // Control body scroll and aria-hidden attribute based on modalOpen state
     useEffect(() => {
         if(modalOpen){
             document.body.style.overflowY = "hidden"
