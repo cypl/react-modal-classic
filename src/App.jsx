@@ -67,19 +67,19 @@ const Button = styled.button`
     color:#fff;
     &.leaf{
         border:1px solid #95a938;
-        background-color:transparent;
+        background-color:rgba(76,89,13,0.6);
         transition:0.1s background-color ease-in-out;
         &:hover{
-            background-color:#4c590d;
+            background-color:rgba(76,89,13,1);
             transition:0.1s background-color ease-in-out;
         }
     }
     &.robin{
         border:1px solid #b97b3e;
-        background-color:transparent;
+        background-color:rgba(89,49,13,0.6);
         transition:0.1s background-color ease-in-out;
         &:hover{
-            background-color:#59310d;
+            background-color:rgba(89,49,13,1);
             transition:0.1s background-color ease-in-out;
         }
     }
