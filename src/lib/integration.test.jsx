@@ -17,7 +17,7 @@ describe('Integration test for Modal component', () => {
   test('Modal should open when button is clicked', async () => {
     
     renderWithProvider(<App />)
-    const openModalButton = screen.getByText('Open modal')
+    const openModalButton = screen.getByText('Open first modal')
     fireEvent.click(openModalButton)
     const modalContent = screen.getByText('This React modal is based on a component and a context provider.')
     
@@ -31,7 +31,7 @@ describe('Integration test for Modal component', () => {
   test('Modal should close when escape key is pressed', async () => {
     
     renderWithProvider(<App />)
-    const openModalButton = screen.getByText('Open modal')
+    const openModalButton = screen.getByText('Open first modal')
     fireEvent.click(openModalButton)
     const modalContent = screen.getByText('This React modal is based on a component and a context provider.')
     
