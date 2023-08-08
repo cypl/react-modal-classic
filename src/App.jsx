@@ -16,7 +16,7 @@ const App = () => {
                 <Button onClick={() => openModal(<ModalContentFirst/>)} className="leaf">Open first modal</Button>
                 <Button onClick={() => openModal(<ModalContentSecond/>, { closebutton: "in", size: "l" })} className="robin">Open second modal</Button>
             </ButtonsWrapper>
-            <p>For more infos, see the <a href="https://www.npmjs.com/package/react-modal-classic" target="_blank" rel="noreferrer">module NPM</a> repository.</p>
+            <p>For more infos, see the <a href="https://www.npmjs.com/package/react-modal-classic" target="_blank" rel="noreferrer">NPM module</a> repository.</p>
         </Main>
     )
 }
