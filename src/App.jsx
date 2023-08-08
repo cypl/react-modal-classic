@@ -7,6 +7,7 @@ import ModalContentSecond from './components/ModalContentSecond'
 const App = () => {
     
     const { openModal } = useContext(ModalContext)
+    const theme = { closebutton: "in", size: "l" }
 
     return (
         <Main>
@@ -14,7 +15,7 @@ const App = () => {
             <p>You can test the modal component, with 2 different contents:</p>
             <ButtonsWrapper>
                 <Button onClick={() => openModal(<ModalContentFirst/>)} className="leaf">Open first modal</Button>
-                <Button onClick={() => openModal(<ModalContentSecond/>, { closebutton: "in", size: "l" })} className="robin">Open second modal</Button>
+                <Button onClick={() => openModal(<ModalContentSecond/>, theme)} className="robin">Open second modal</Button>
             </ButtonsWrapper>
             <p>For more infos, see the <a href="https://www.npmjs.com/package/react-modal-classic" target="_blank" rel="noreferrer">NPM module</a> repository.</p>
         </Main>
