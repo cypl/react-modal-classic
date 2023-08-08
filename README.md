@@ -117,7 +117,7 @@ const App = () => {
 
     return (
         <main>
-            <button onClick={() => openModal(<ModalContentForm/>, modalFormOptions), themeFirst}>Open a form</button>
+            <button onClick={() => openModal(<ModalContentForm/>, modalFormOptions)}>Open a form</button>
             <button onClick={() => openModal(<ModalContentMedia/>, modalMediaOptions)}>Open a media</button>
         </main>
     )
