@@ -1,48 +1,84 @@
 import React, { useContext } from 'react'
 import styled from "styled-components"
 import { ModalContext } from './lib/ModalContext'
-import ModalContentFirst from './ModalContentFirst'
-import ModalContentSecond from './ModalContentSecond'
+import ModalContentFirst from './components/ModalContentFirst'
+import ModalContentSecond from './components/ModalContentSecond'
 
 const App = () => {
     
     const { openModal } = useContext(ModalContext)
 
     return (
-        <main>
-            <Button onClick={() => openModal(<ModalContentFirst/>)} className="normal">Open modal</Button>
-            <Button onClick={() => openModal(<ModalContentSecond/>, { closebutton: "in", size: "l" })} className="function">Open modal with function</Button>
-        </main>
+        <Main>
+            <h1 className="app_title">React Modal Classic</h1>
+            <p>You can test the modal component, with 2 different contents:</p>
+            <ButtonsWrapper>
+                <Button onClick={() => openModal(<ModalContentFirst/>)} className="leaf">Open first modal</Button>
+                <Button onClick={() => openModal(<ModalContentSecond/>, { closebutton: "in", size: "l" })} className="robin">Open second modal</Button>
+            </ButtonsWrapper>
+            <p>For more infos, see the <a href="https://www.npmjs.com/package/react-modal-classic" target="_blank" rel="noreferrer">module NPM</a> repository.</p>
+        </Main>
     )
 }
 
 export default App
 
+const Main = styled.main`
+    text-align:center;
+    & .app_title{
+        font-size:28px;
+        line-height:1.2;
+        font-weight:900;
+        color:#fff;
+        margin:0 0 30px 0;
+    }
+    & p{
+        margin:0;
+        color:#888;
+        & a{
+            color:#fff;
+            text-decoration:none;
+            font-weight:700;
+            border-bottom:1px solid transparent;
+            transition:0.1s border-color ease-in-out;
+            &:hover{
+                border-bottom:1px solid #b97b3e;
+                transition:0.1s border-color ease-in-out;
+            }
+        }
+    }
+
+`
+const ButtonsWrapper = styled.div`
+    display:flex;
+    justify-content:center;
+    padding: 30px 0;
+`
 const Button = styled.button`
     text-transform:uppercase;
     font-size:14px;
     line-height:1;
     padding:15px 20px;
-    border-radius:4px;
+    border-radius:5px;
     border:none;
     margin:0 10px;
     cursor:pointer;
     color:#fff;
-    &.normal{
-        color:#072817;
-        background-color:#00c35e;
+    &.leaf{
+        border:1px solid #95a938;
+        background-color:transparent;
         transition:0.1s background-color ease-in-out;
         &:hover{
-            background-color:#157845;
+            background-color:#4c590d;
             transition:0.1s background-color ease-in-out;
         }
     }
-    &.function{
-        color:#282023;
-        background-color:#dc95ae;
+    &.robin{
+        border:1px solid #b97b3e;
+        background-color:transparent;
         transition:0.1s background-color ease-in-out;
         &:hover{
-            background-color:#90576b;
+            background-color:#59310d;
             transition:0.1s background-color ease-in-out;
         }
     }
