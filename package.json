@@ -1,7 +1,7 @@
 {
     "name": "react-modal-classic",
-    "version": "0.0.21",
-    "description": "This is a classic modal component for your React application, easy to use and customise… hook included!",
+    "version": "0.0.27",
+    "description": "An easy-to-use and classic javascript React modal, that allows you to pop out “one modal at a time” in your React App.",
     "license": "MIT",
     "author": "cypl",
     "repository": "cypl/react-modal-classic",
