@@ -1,7 +1,7 @@
 # React Modal Classic
 
 An easy-to-use and classic javascript React modal, that allows you to pop out *“one modal at a time”* in your React App.
-[See it in action here.](https://google.com) 
+[See it in action here.](https://react-modal-classic.cyrille.dev/) 
 
 ## Why this module?
 
