@@ -8,7 +8,7 @@ function ModalContentFirst(){
     return (
         <div>
             <figure>
-                <img src="tom-bradley-robin.jpg" alt="image content"/>
+                <img src="src/assets/tom-bradley-robin.jpg" alt="image content"/>
                 <figcaption>© Tom Bradley</figcaption>
             </figure>
             <div className="modal-caption">

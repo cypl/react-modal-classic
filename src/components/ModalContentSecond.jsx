@@ -8,7 +8,7 @@ function ModalContentSecond(){
     return (
         <div>
             <figure>
-                <img src="john-mcmahon-robin.jpg" alt="image content"/>
+                <img src="src/assets/john-mcmahon-robin.jpg" alt="image content"/>
                 <figcaption>© John Mc Mahon</figcaption>
             </figure>
             <div className="modal-caption">
