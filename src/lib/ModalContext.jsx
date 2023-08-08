@@ -33,6 +33,7 @@ export const ModalProvider = ({ children }) => {
     }, [modalOpen])
 
     const openModal = (content, options = {}) => {
+        setModalOptions(defaultOptions)
         // Merge default options with provided ones (if any)
         setModalOptions(prevOptions => ({
             ...prevOptions,
