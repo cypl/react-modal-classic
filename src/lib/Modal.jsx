@@ -156,7 +156,7 @@ function Modal({
                     <Background className={animeOut ? 'anime-out' : ''}>
                         <CloserBackground onClick={() => closeModal()}></CloserBackground>
                         <ModalContent $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''}>
-                            <ModalContentBackground style={{backgroundColor : `${(backgroundcolor != undefined) ? `${backgroundcolor}` : "#fff"}`, borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
+                            <ModalContentBackground style={{backgroundColor : `${backgroundcolor}`, borderRadius:`${radius}`}}>
                                 {closebutton != "none" && 
                                     <CloseModal onClick={() => closeModal()} $closebutton={closebutton}>
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style={{color:`${(closebuttoncolor != undefined) ? `${closebuttoncolor}` : `rgba(255,255,255,0.7)`}`}} xmlns="http://www.w3.org/2000/svg">
@@ -183,9 +183,9 @@ Modal.propTypes = {
     animeOut: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
     closebutton: PropTypes.string,
+    closebuttoncolor: PropTypes.string,
     size: PropTypes.oneOf(["s", "m", "l", "xl"]),
     backgroundcolor: PropTypes.string,
     radius: PropTypes.string,
-    closebuttoncolor: PropTypes.string,
     modalContent: PropTypes.any,
 }
