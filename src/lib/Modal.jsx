@@ -117,6 +117,11 @@ const CloseModal = styled.div`
         color:${props => props.$closebutton === "in" ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.7)"};
     }
 `
+const CloserBackground = styled.div`
+    position:absolute;    
+    height:100%;
+    width:100%;
+`
 const sizeValues = {
     s: "350px",
     m: "500px",
@@ -124,7 +129,16 @@ const sizeValues = {
     xl: "900px",
 }
 
-function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor, size, backgroundcolor, radius, modalContent }){
+function Modal({ 
+    modalOpen, 
+    animeOut, 
+    closeModal, 
+    closebutton, 
+    closebuttoncolor, 
+    size, 
+    backgroundcolor, 
+    radius, 
+    modalContent }){
     
     // close Modal on keyboard escape
     useEffect(() => {
@@ -139,7 +153,8 @@ function Modal({ modalOpen, animeOut, closeModal, closebutton, closebuttoncolor,
         <>
             {modalOpen && modalContent &&
                 <Overlay role="dialog" aria-modal="true" aria-hidden="false">
-                    <Background onClick={() => closeModal()} className={animeOut ? 'anime-out' : ''}>
+                    <Background className={animeOut ? 'anime-out' : ''}>
+                        <CloserBackground onClick={() => closeModal()}></CloserBackground>
                         <ModalContent $closebutton={closebutton} size={size} className={animeOut ? 'anime-out' : ''}>
                             <ModalContentBackground style={{backgroundColor : `${(backgroundcolor != undefined) ? `${backgroundcolor}` : "#fff"}`, borderRadius:`${(radius != undefined) ? `${radius}` : `none`}`}}>
                                 {closebutton != "none" && 
