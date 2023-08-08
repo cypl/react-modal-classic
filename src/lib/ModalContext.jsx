@@ -20,6 +20,7 @@ export const ModalProvider = ({ children }) => {
     const [modalOptions, setModalOptions] = useState(defaultOptions)
     const closingTimeout = useRef(null)
 
+    // Control body scroll and aria attribute based on modalOpen state
     useEffect(() => {
         if(modalOpen){
             document.body.style.overflowY = "hidden"
