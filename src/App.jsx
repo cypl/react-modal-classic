@@ -4,7 +4,11 @@ import { ModalContext } from './lib/ModalContext'
 import ModalContentFirst from './components/ModalContentFirst'
 import ModalContentSecond from './components/ModalContentSecond'
 
-const App = () => {
+/**
+ * Displays the App component.
+ * @returns {JSX.Element} - The JSX markup for the App component.
+ */
+function App() {
     
     const { openModal } = useContext(ModalContext)
     const theme = { closebutton: "in", closebuttoncolor: "#af5f0c", size: "s", backgroundcolor: "#c7cd77", radius:"12px" }

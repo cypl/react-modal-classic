@@ -1,6 +1,10 @@
 import React, { useContext } from 'react'
 import { ModalContext } from '../lib/ModalContext'
 
+/**
+ * Displays a test content component for a modal.
+ * @returns {JSX.Element} - The JSX markup for the ModalContentFirst component.
+ */
 function ModalContentFirst(){
     
     const { closeModal } = useContext(ModalContext)
