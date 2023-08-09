@@ -32,6 +32,17 @@ export const ModalProvider = ({ children }) => {
         }
     }, [modalOpen])
 
+    /**
+     * Opens the modal with the specified content and options.
+     * 
+     * @param {React.ReactNode} content - The content to be displayed inside the modal.
+     * @param {Object} [options={}] - Custom modal configuration options.
+     * @param {string} [options.closebutton="out"] - Position of the close button ("out", "in" or "none").
+     * @param {string} [options.closebuttoncolor="#fff"] - Color of the close button.
+     * @param {string} [options.size="m"] - Size of the modal ("s", "m", "l", "xl").
+     * @param {string} [options.backgroundcolor="#fff"] - Background color of the modal.
+     * @param {string} [options.radius="6px"] - Border radius of the modal.
+     */
     const openModal = (content, options = {}) => {
         setModalOptions(defaultOptions)
         // Merge default options with provided ones (if any)
@@ -45,6 +56,10 @@ export const ModalProvider = ({ children }) => {
         setModalContent(content)
     }
 
+    /**
+     * Closes the modal with a closing animation.
+     * Ensures the modal's state is reset after the animation.
+     */
     const closeModal = useCallback(() => {
         // If the closing timeout is still running, don't do anything
         if (closingTimeout.current) return
@@ -57,7 +72,6 @@ export const ModalProvider = ({ children }) => {
             setAnimeOut(false)
             closingTimeout.current = null
         }, 600) // 600ms is the duration of the closing animation
-
     }, [])
 
     return (
