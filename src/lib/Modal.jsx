@@ -129,6 +129,10 @@ const sizeValues = {
     xl: "900px",
 }
 
+/**
+ * Displays the Modal component.
+ * @returns {JSX.Element} - The JSX markup for the Modal component.
+ */
 function Modal({ 
     modalOpen, 
     animeOut, 
