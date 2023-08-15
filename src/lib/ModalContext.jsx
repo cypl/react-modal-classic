@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useCallback, createContext, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, createContext, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Modal from './Modal'
 
 export const ModalContext = createContext()
 
+// Here are the default options for the Modal component 
+const defaultOptions = {
+    closebutton: "out",
+    closebuttoncolor: "#fff",
+    size: "m",
+    backgroundcolor: "#fff",
+    radius: "6px"
+}
+
 export const ModalProvider = ({ children }) => {
     
-    // Here are the default options for the Modal component 
-    const defaultOptions = useMemo(() => ({
-        closebutton: "out",
-        closebuttoncolor: "#fff",
-        size: "m",
-        backgroundcolor: "#fff",
-        radius: "6px"
-    }),[])
-
     const [modalOpen, setModalOpen] = useState(false)
     const [modalContent, setModalContent] = useState()
     const [animeOut, setAnimeOut] = useState(false)
@@ -25,10 +25,10 @@ export const ModalProvider = ({ children }) => {
     useEffect(() => {
         if(modalOpen){
             document.body.style.overflowY = "hidden"
-            document.querySelector('main').setAttribute("aria-hidden", "true")
+            document.querySelector('main') && document.querySelector('main').setAttribute("aria-hidden", "true")
         } else {
-            document.body.removeAttribute("style")
-            document.querySelector('main').removeAttribute("aria-hidden")
+            document.body.style.overflowY = "auto"
+            document.querySelector('main') && document.querySelector('main').removeAttribute("aria-hidden")
         }
     }, [modalOpen])
 
@@ -43,16 +43,16 @@ export const ModalProvider = ({ children }) => {
      * @param {string} [options.backgroundcolor="#fff"] - Background color of the modal.
      * @param {string} [options.radius="6px"] - Border radius of the modal.
      */
-    const openModal = (content, options = {}) => {
-        setModalOptions(defaultOptions)
+    const openModal = (content, options = null) => {
         // Merge default options with provided ones (if any)
         setModalOptions(prevOptions => ({
             ...prevOptions,
-            ...options
+            ...options ?? defaultOptions
         }))
         setModalOpen(true)
         // Clear any pre-existing closing timeout to ensure modals don't overlap or interfere with each other
         if (closingTimeout.current) clearTimeout(closingTimeout.current)
+        closingTimeout.current = null
         setModalContent(content)
     }
 
