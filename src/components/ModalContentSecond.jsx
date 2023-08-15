@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { ModalContext } from '../lib/ModalContext'
+import ModalContentFirst from './ModalContentFirst'
 
 /**
  * Displays a test content component for a modal.
@@ -7,7 +8,7 @@ import { ModalContext } from '../lib/ModalContext'
  */
 function ModalContentSecond(){
     
-    const { closeModal } = useContext(ModalContext)
+    const { openModal } = useContext(ModalContext)
 
     return (
         <div>
@@ -17,7 +18,7 @@ function ModalContentSecond(){
             </figure>
             <div className="modal-caption">
                 <p>This is another modal, <br/>with custom styles options passed as props.<br/>
-                    <button onClick={closeModal} className="close">Close</button>
+                    <button onClick={() => openModal(<ModalContentFirst/>)} className="close">Test open another modal</button>
                 </p>
             </div>
         </div>
