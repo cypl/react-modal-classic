@@ -8,7 +8,7 @@ export const ModalContext = createContext()
 const defaultOptions = {
     closeButton: "out",
     closeButtonColor: "#fff",
-    size: "m",
+    size: "md",
     backgroundColor: "#fff",
     radius: "6px"
 }
