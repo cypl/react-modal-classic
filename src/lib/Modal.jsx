@@ -123,9 +123,9 @@ const CloserBackground = styled.div`
     width:100%;
 `
 const sizeValues = {
-    s: "350px",
-    m: "500px",
-    l: "750px",
+    sm: "350px",
+    md: "500px",
+    lg: "750px",
     xl: "900px",
 }
 
@@ -188,7 +188,7 @@ Modal.propTypes = {
     closeModal: PropTypes.func.isRequired,
     closeButton: PropTypes.string,
     closeButtonColor: PropTypes.string,
-    size: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
     backgroundColor: PropTypes.string,
     radius: PropTypes.string,
     modalContent: PropTypes.any,

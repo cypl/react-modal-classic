@@ -39,7 +39,7 @@ export const ModalProvider = ({ children }) => {
      * @param {Object} [options={}] - Custom modal configuration options.
      * @param {string} [options.closeButton="out"] - Position of the close button ("out", "in" or "none").
      * @param {string} [options.closeButtonColor="#fff"] - Color of the close button.
-     * @param {string} [options.size="m"] - Size of the modal ("s", "m", "l", "xl").
+     * @param {string} [options.size="md"] - Size of the modal ("sm", "md", "lg", "xl").
      * @param {string} [options.backgroundColor="#fff"] - Background color of the modal.
      * @param {string} [options.radius="6px"] - Border radius of the modal.
      */
