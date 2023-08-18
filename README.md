@@ -94,10 +94,10 @@ export default App
 Right from the box, the modal component is set with these default options:
 ```javascript
 const defaultOptions = {
-    closebutton: "out", // has to be "out", "in" or "none"
-    closebuttoncolor: "#fff", // should be a color value "red", "rgba(255,0,0,0.5)", "#242424"…
+    closeButton: "out", // has to be "out", "in" or "none"
+    closeButtonColor: "#fff", // should be a color value "red", "rgba(255,0,0,0.5)", "#242424"…
     size: "m", // has to be "s", "m", "l", "xl"
-    backgroundcolor: "#fff", // should be a color value "pink", "rgba(120,120,120,0.8)", "#242424"…
+    backgroundColor: "#fff", // should be a color value "pink", "rgba(120,120,120,0.8)", "#242424"…
     radius: "6px" // should be a size value "5px", "0.5rem"…
 }
 ``` 
@@ -113,8 +113,8 @@ import ModalContentMedia from "./components/ModalContentMedia"
 const App = () => {
     
     const { openModal } = useContext(ModalContext)
-    const modalFormOptions = { closebutton: "in", backgroundcolor: "#999", size: "m" }
-    const modalMediaOptions = { closebutton: "none", size: "xl", radius: "none" }
+    const modalFormOptions = { closeButton: "in", backgroundColor: "#999", size: "m" }
+    const modalMediaOptions = { closeButton: "none", size: "xl", radius: "none" }
 
     return (
         <main>

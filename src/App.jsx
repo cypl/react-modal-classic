@@ -11,7 +11,7 @@ import ModalContentSecond from './components/ModalContentSecond'
 function App() {
     
     const { openModal } = useContext(ModalContext)
-    const theme = { closebutton: "in", closebuttoncolor: "#af5f0c", size: "s", backgroundcolor: "#c7cd77", radius:"12px" }
+    const theme = { closeButton: "in", closeButtonColor: "#af5f0c", size: "s", backgroundColor: "#c7cd77", radius:"12px" }
 
     return (
         <Main>

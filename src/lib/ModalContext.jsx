@@ -6,10 +6,10 @@ export const ModalContext = createContext()
 
 // Here are the default options for the Modal component 
 const defaultOptions = {
-    closebutton: "out",
-    closebuttoncolor: "#fff",
+    closeButton: "out",
+    closeButtonColor: "#fff",
     size: "m",
-    backgroundcolor: "#fff",
+    backgroundColor: "#fff",
     radius: "6px"
 }
 
@@ -37,10 +37,10 @@ export const ModalProvider = ({ children }) => {
      * 
      * @param {React.ReactNode} content - The content to be displayed inside the modal.
      * @param {Object} [options={}] - Custom modal configuration options.
-     * @param {string} [options.closebutton="out"] - Position of the close button ("out", "in" or "none").
-     * @param {string} [options.closebuttoncolor="#fff"] - Color of the close button.
+     * @param {string} [options.closeButton="out"] - Position of the close button ("out", "in" or "none").
+     * @param {string} [options.closeButtonColor="#fff"] - Color of the close button.
      * @param {string} [options.size="m"] - Size of the modal ("s", "m", "l", "xl").
-     * @param {string} [options.backgroundcolor="#fff"] - Background color of the modal.
+     * @param {string} [options.backgroundColor="#fff"] - Background color of the modal.
      * @param {string} [options.radius="6px"] - Border radius of the modal.
      */
     const openModal = (content, options = null) => {
