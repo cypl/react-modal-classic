@@ -23,9 +23,10 @@ npm i react-modal-classic
 
 ### Dependencies:
 
-- Styled Components
-- React
-- React Dom
+Your React projet should run with these dependencies:
+- Styled Components (version ≥6.0.4)
+- React (version ≥18.0.0)
+- React Dom (version ≥18.0.0)
 
 ## How to use?
 
