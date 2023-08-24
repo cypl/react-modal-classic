@@ -1,6 +1,6 @@
 {
     "name": "react-modal-classic",
-    "version": "0.0.38",
+    "version": "0.0.41",
     "description": "An easy-to-use and classic javascript React modal, that allows you to pop out “one modal at a time” in your React App.",
     "license": "MIT",
     "author": "cypl",
@@ -62,7 +62,6 @@
         "vitest": "^0.33.0",
         "@typescript-eslint/eslint-plugin": "^6.1.0",
         "prop-types": "^15.8.1",
-        "styled-components": "^6.0.4",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"
     },
