@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: (format) => `react-modal-classic.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'styled-components'],
       output: {
         globals: {
           react: 'React'
