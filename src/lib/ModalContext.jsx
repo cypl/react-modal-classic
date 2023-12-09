@@ -37,6 +37,9 @@ export const ModalProvider = ({ children }) => {
      * Opens the modal with the specified content and options.
      * 
      * @param {React.ReactNode} content - The content to be displayed inside the modal.
+     * @param {Function} onCloseCallback - A callback function that is executed when the modal is closed. 
+     *                                     This function is optional and can be used to perform any 
+     *                                     cleanup or follow-up actions after the modal is closed.
      * @param {Object} [options={}] - Custom modal configuration options.
      * @param {string} [options.closeButton="out"] - Position of the close button ("out", "in" or "none").
      * @param {string} [options.closeButtonColor="#fff"] - Color of the close button.
