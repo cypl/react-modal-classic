@@ -147,11 +147,11 @@ function Modal({
     // close Modal on keyboard escape
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === 'Escape') { closeModal() }
+            (event.key === 'Escape') && closeModal()
         }
         document.addEventListener('keydown', handleKeyDown)
         return () => { document.removeEventListener('keydown', handleKeyDown) }
-    }, [])
+    }, [closeModal])
 
     return(
         <>
