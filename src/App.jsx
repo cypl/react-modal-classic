@@ -12,14 +12,15 @@ function App() {
     
     const { openModal } = useContext(ModalContext)
     const theme = { closeButton: "in", closeButtonColor: "#af5f0c", size: "sm", backgroundColor: "#c7cd77", radius:"12px" }
+    const onCloseCallback = (name) => {console.log("Hello " + name)}
 
     return (
         <Main>
             <h1 className="app_title">React Modal Classic</h1>
             <p>You can test the modal component, with 2 different contents:</p>
             <ButtonsWrapper>
-                <Button onClick={() => openModal(<ModalContentFirst/>)} className="leaf">Open first modal</Button>
-                <Button onClick={() => openModal(<ModalContentSecond/>, theme )} className="robin">Open second modal</Button>
+                <Button onClick={() => openModal(<ModalContentFirst/>,() => onCloseCallback("Robin!"))} className="leaf">Open first modal</Button>
+                <Button onClick={() => openModal(<ModalContentSecond/>, () => onCloseCallback("Robin!"), theme)} className="robin">Open second modal</Button>
             </ButtonsWrapper>
             <p>For more infos, see the <a href="https://www.npmjs.com/package/react-modal-classic" target="_blank" rel="noreferrer">NPM module</a> repository.</p>
         </Main>
