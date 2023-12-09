@@ -47,7 +47,16 @@ export const ModalProvider = ({ children }) => {
      * @param {string} [options.backgroundColor="#fff"] - Background color of the modal.
      * @param {string} [options.radius="6px"] - Border radius of the modal.
      */
-    const openModal = (content, onCloseCallback = () => {}, options = null) => {
+    const openModal = (content, arg2 = () => {}, arg3 = null) => {
+        let onCloseCallback = () => {};
+        let options = null;
+        // Add a type verification, in case function is used without arg2 or arg3
+        if (typeof arg2 === 'function') {
+            onCloseCallback = arg2;
+            options = arg3;
+        } else if (typeof arg2 === 'object') {
+            options = arg2;
+        }
         // Merge default options with provided ones (if any)
         setModalOptions(prevOptions => ({
             ...prevOptions,
