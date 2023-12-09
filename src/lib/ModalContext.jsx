@@ -19,6 +19,7 @@ export const ModalProvider = ({ children }) => {
     const [modalContent, setModalContent] = useState()
     const [animeOut, setAnimeOut] = useState(false)
     const [modalOptions, setModalOptions] = useState(defaultOptions)
+    const [onClose, setOnClose] = useState(() => () => {})
     const closingTimeout = useRef(null)
 
     // Control body scroll and <main> aria-hidden attribute, based on modalOpen state
@@ -43,7 +44,7 @@ export const ModalProvider = ({ children }) => {
      * @param {string} [options.backgroundColor="#fff"] - Background color of the modal.
      * @param {string} [options.radius="6px"] - Border radius of the modal.
      */
-    const openModal = (content, options = null) => {
+    const openModal = (content, onCloseCallback = () => {}, options = null) => {
         // Merge default options with provided ones (if any)
         setModalOptions(prevOptions => ({
             ...prevOptions,
@@ -54,6 +55,7 @@ export const ModalProvider = ({ children }) => {
         if (closingTimeout.current) clearTimeout(closingTimeout.current)
         closingTimeout.current = null
         setModalContent(content)
+        setOnClose(() => onCloseCallback)
     }
 
     /**
@@ -61,6 +63,7 @@ export const ModalProvider = ({ children }) => {
      * Ensures the modal's state is reset after the animation.
      */
     const closeModal = useCallback(() => {
+        onClose()
         // If the closing timeout is still running, don't do anything
         if (closingTimeout.current) return
         setAnimeOut(true)
@@ -72,7 +75,7 @@ export const ModalProvider = ({ children }) => {
             setAnimeOut(false)
             closingTimeout.current = null
         }, 600) // 600ms is the duration of the closing animation
-    }, [])
+    }, [onClose])
 
     return (
         <ModalContext.Provider value={{ openModal, closeModal }}>
