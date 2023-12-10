@@ -89,8 +89,27 @@ const App = () => {
 
 export default App
 ```
+### 3- Add a callback function when closing modal:
+You can pass a callback function as a parameter in the the openModal() function. This function triggers when the user close the modal, and is optional.
+```jsx
+import React, { useContext } from 'react'
+import styled from "styled-components"
+import { ModalContext } from './lib/ModalContext'
+import ModalContent from './components/ModalContent'
 
-### 3- Customize the look of your modals:
+const App = () => {
+    const { openModal } = useContext(ModalContext)
+    const onCloseCallback = (name) => {console.log("Hello " + name)}
+    return (
+        <main>
+            <Button onClick={() => openModal(<ModalContent/>, () => onCloseCallback("Robin!"))}>Open modal</Button>
+        </main>
+    )
+}
+export default App
+```
+
+### 4- Customize the look of your modals:
 #### a- Options by default
 Right from the box, the modal component is set with these default options:
 ```javascript
@@ -103,7 +122,7 @@ const defaultOptions = {
 }
 ``` 
 #### b- Set different options in the function
-You can pass options as a parameter object in the openModal() function. It can be usefull if you have different kinds of contents in your app that need to be shown in a modal. 
+You can pass options as a parameter object in the openModal() function. It can be usefull if you have different kinds of contents in your app that need to be shown in a modal. This is optional.
 Here are two examples:
 ```jsx
 import React, { useContext } from "react"
@@ -116,19 +135,24 @@ const App = () => {
     const { openModal } = useContext(ModalContext)
     const modalFormOptions = { closeButton: "in", backgroundColor: "#999", size: "md" }
     const modalMediaOptions = { closeButton: "none", size: "xl", radius: "none" }
+    const onCloseCallback = (name) => {console.log("Hello " + name)}
 
     return (
         <main>
             <button onClick={() => openModal(<ModalContentForm/>, modalFormOptions)}>Open a form</button>
-            <button onClick={() => openModal(<ModalContentMedia/>, modalMediaOptions)}>Open a media</button>
+            <button onClick={() => openModal(<ModalContentMedia/>, () => onCloseCallback("Robin!"), modalMediaOptions)}>Open a media</button>
         </main>
     )
 }
 
 export default App
 ```
+Note that in the second example, it is possible to use 3 parameters in the openModal() function : 
+- the content as a JSX component (required)
+- a callback function that triggers when user close the modal (optional)
+- an object that defines styles of the modal (optional)
 
-### 4- Close the modal
+### 5- Close the modal
 Modal can be closed by :
 - clicking the close button (close icon at the top right corner of the modal)
 - clicking somewhere in the background
