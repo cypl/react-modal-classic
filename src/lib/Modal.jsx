@@ -22,7 +22,7 @@ const fadeOut = keyframes`
 const popIn = keyframes`
     0% {
         opacity: 0;
-        transform:translateY(25px);
+        transform:translateY(40px);
     }
     100% {
         opacity: 1;
@@ -36,7 +36,7 @@ const popOut = keyframes`
     }
     100% {
         opacity: 0;
-        transform:translateY(25px);
+        transform:translateY(40px);
     }
 `
 const Overlay = styled.div`
@@ -57,7 +57,7 @@ const Background = styled.div`
     min-height:100%;
     background-color: rgba(0, 0, 0, 0.85);
     animation-name: ${fadeIn};
-    animation-duration: 0.05s; 
+    animation-duration: 0.1s; 
     animation-timing-function: linear; 
     animation-delay: 0s; 
     animation-iteration-count: 1; 
@@ -65,8 +65,8 @@ const Background = styled.div`
     animation-direction:normal;
     &.anime-out{
         animation-name: ${fadeOut};
-        animation-duration: 0.05s; 
-        animation-delay: 0.4s; 
+        animation-duration: 0.1s; 
+        animation-delay: 0.5s; 
     }
 `
 const ModalContent = styled.div`
@@ -77,15 +77,15 @@ const ModalContent = styled.div`
     width: ${props => sizeValues[props.size] || "1100px"};
     opacity:0;
     animation-name: ${popIn}; 
-    animation-duration: 0.05s; 
+    animation-duration: 0.15s; 
+    animation-delay: 0.4s; 
     animation-timing-function: ease-in-out; 
-    animation-delay: 0.35s; 
     animation-iteration-count: 1; 
     animation-fill-mode: forwards;
     animation-direction:normal;
     &.anime-out{
         animation-name: ${popOut};
-        animation-duration: 0.05s; 
+        animation-duration: 0.15s; 
         animation-delay: 0s; 
     }
 `
